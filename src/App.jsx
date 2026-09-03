@@ -1,122 +1,103 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+// src/App.jsx
+import { useState } from "react";
+import "./App.css";
+
+const officials = [
+  ["DF", "Shri. Devendra Fadnavis", "Hon'ble Chief Minister"],
+  ["ES", "Shri. Eknath Shinde", "Hon'ble Deputy Chief Minister"],
+  ["SP", "Smt. Sunetra Ajit Pawar", "Hon'ble Deputy Chief Minister"],
+  ["AS", "Adv. Ashish Shelar", "Hon. Minister of IT"],
+];
+
+const navItems = [
+  "⌂ Home",
+  "☎ Contact Us",
+  "◉ Dashboard",
+  "Login",
+  "About us",
+  "⚑ RTS Dashboard Login",
+];
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [activeNav, setActiveNav] = useState(0);
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div className="site-wrapper">
+      <div className="topbar">
+        <div className="container d-flex justify-content-between align-items-center">
+          <span>Maharashtra Police</span>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+          <div className="accessibility">
+            <button>A+</button>
+            <button>A-</button>
+            <button>A=</button>
+            <button className="dark">A</button>
+            <button>A</button>
+            <button className="marathi">मराठी</button>
+          </div>
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+      </div>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      <header className="container brand-section">
+        <div className="logos">
+          <img
+            className="logoimg"
+            src="https://www.mahapolice.gov.in/images/mahaPolicelLogo2.jpg"
+            alt="Maharashtra Police logo"
+          />
+
+          <div className="title-area">
+            <h1>सदरक्षणाय खलनिग्रणाय</h1>
+          </div>
+        </div>
+
+        <div className="official-list">
+          {officials.map(([initials, name, role]) => (
+            <div className="official" key={initials}>
+              <div className="photo">{initials}</div>
+              <strong>{name}</strong>
+              <small>{role}</small>
+            </div>
+          ))}
+        </div>
+      </header>
+
+      <nav className="navbar navbar-expand-xl p-0 main-nav">
+        <div className="container px-0">
+          <button
+            className="navbar-toggler m-2"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainMenu"
+            aria-controls="mainMenu"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            ☰
+          </button>
+
+          <div className="collapse navbar-collapse" id="mainMenu">
+            <ul className="navbar-nav">
+              {navItems.map((item, index) => (
+                <li className="nav-item" key={item}>
+                  <a
+                    className={`nav-link ${activeNav === index ? "active" : ""}`}
+                    href="#"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      setActiveNav(index);
+                    }}
+                  >
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  );
 }
 
-export default App
+export default App;

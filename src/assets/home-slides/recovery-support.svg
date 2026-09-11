@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 650" role="img" aria-labelledby="title desc">
+  <title id="title">Vehicle recovery support</title>
+  <desc id="desc">A recovered car, route map, and confirmation mark on a green background.</desc>
+  <defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#0f5f66"/><stop offset="1" stop-color="#6fb477"/></linearGradient></defs>
+  <rect width="1600" height="650" fill="url(#bg)"/>
+  <g transform="translate(145 100)"><path d="M40 60l230-45 82 116-230 45z" fill="#d9efe2"/><path d="M105 86l92-17M129 145l92-18M207 54l72 104" stroke="#78a99a" stroke-width="13" fill="none"/><circle cx="85" cy="70" r="28" fill="#e85d39"/><circle cx="295" cy="150" r="28" fill="#f2a532"/><path d="M85 70C180 260 217 24 295 150" fill="none" stroke="#234a77" stroke-width="9" stroke-dasharray="13 11"/></g>
+  <g transform="translate(650 285)"><path d="M60 150h380l-52-123H148z" fill="#f4f7fa"/><path d="M102 153h300l58 65v104H35V218z" fill="#f2a532"/><path d="M135 153h96l-37-91h-47zM270 153h96l-12-91h-47z" fill="#a5d9ec"/><circle cx="130" cy="322" r="47" fill="#172331"/><circle cx="368" cy="322" r="47" fill="#172331"/><circle cx="130" cy="322" r="22" fill="#cbd9e3"/><circle cx="368" cy="322" r="22" fill="#cbd9e3"/></g>
+  <g transform="translate(1190 135)"><circle cx="120" cy="120" r="112" fill="#f4f9eb"/><path d="M67 124l37 37 70-83" fill="none" stroke="#2f8b5a" stroke-width="27" stroke-linecap="round" stroke-linejoin="round"/></g>
+</svg>

@@ -5,13 +5,13 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #ffffff;
+  background: #f8fafc;
 }
 
 .site-wrapper {
-  min-height: 100vh;
+  min-height: 0;
   border: 6px solid #242424;
-  border-bottom: 4px solid #e4511b;
+  border-bottom: 4px solid #14b8a6;
 }
 
 .topbar {
@@ -152,8 +152,8 @@ body {
 }
 
 .main-nav {
-  background: #fff5df;
-  border-top: 1px solid #eadbc4;
+  background: #1f2b44;
+  border-top: 1px solid #14b8a6;
 }
 
 .main-nav .navbar-nav {
@@ -164,13 +164,13 @@ body {
 
 .main-nav .nav-item {
   flex: 1 1 0;
-  border-right: 1px solid #e8d9c3;
+  border-right: 1px solid #334155;
 }
 
 .main-nav .nav-link {
   width: 100%;
   padding: 14px 16px;
-  color: #4d4d4d;
+  color: #e5e7eb;
   font-size: 13px;
   font-weight: 600;
   text-align: center;
@@ -179,18 +179,18 @@ body {
 }
 
 .main-nav .nav-link:hover {
-  color: #fff;
-  background: #e96526;
+  color: #e5e7eb;
+  background: #403790;
 }
 
 .main-nav .nav-link.active {
-  color: #fff;
-  background: #e96526;
+  color: #e5e7eb;
+  background: #403790;
 }
 
 .navbar-toggler {
-  border-color: #e96526;
-  color: #e96526;
+  border-color: #14b8a6;
+  color: #e5e7eb;
 }
 
 .home-carousel {

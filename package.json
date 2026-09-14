@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "bootstrap": "^5.3.8",
+    "i18next": "^26.4.2",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.2.8",
+    "react-i18next": "^17.0.14"
   },
   "devDependencies": {
     "@babel/core": "^7.29.7",

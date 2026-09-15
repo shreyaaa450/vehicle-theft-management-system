@@ -17,7 +17,7 @@ const navItems = [
   "nav.login"
 ];
  
-function App({ onLogin }) {
+function App({ onHome, onContact, onLogin }) {
   const [activeNav, setActiveNav] = useState(0);
   const { t, i18n } = useTranslation();
 
@@ -32,7 +32,7 @@ function App({ onLogin }) {
 
 
   return (
-    <div className="site-wrapper">
+    <>
       <div className="topbar">
         <div className="container d-flex justify-content-between align-items-center">
           <span>{t("site.name")}</span>
@@ -41,9 +41,7 @@ function App({ onLogin }) {
             <button>A+</button>
             <button>A-</button>
             <button>A=</button>
-            <button className="dark">A</button>
-            <button>A</button>
-            <button className="marathi" type="button" onClick={toggleLanguage} aria-label={t(i18n.language === "mr" ? "language.switchToEnglish" : "language.switchToMarathi")}>
+             <button className="marathi" type="button" onClick={toggleLanguage} aria-label={t(i18n.language === "mr" ? "language.switchToEnglish" : "language.switchToMarathi")}>
               {t(i18n.language === "mr" ? "language.english" : "language.marathi")}
             </button>
           </div>
@@ -106,7 +104,11 @@ function App({ onLogin }) {
                     onClick={(event) => {
                       event.preventDefault();
                       setActiveNav(index);
-                      if (item === "nav.login") {
+            if (item === "nav.home") {
+            onHome();
+            } else if (item === "nav.contact") {
+            onContact();
+            } else if (item === "nav.login") {
                         onLogin();
                       }
                     }}
@@ -120,7 +122,7 @@ function App({ onLogin }) {
         </div>
       </nav>
 
-    </div>
+    </>
   );
 }
 

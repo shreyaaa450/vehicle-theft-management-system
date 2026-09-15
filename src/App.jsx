@@ -1,5 +1,6 @@
 // src/App.jsx
 import Homepage from "./pages/homepage.jsx";
+import Contact from "./pages/contact.jsx";
 import Navbar from "./components/navbar.jsx";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -11,13 +12,20 @@ import "./css/auth.css";
 export default function App() {
 	const [isLoginOpen, setIsLoginOpen] = useState(false);
 	const [showSignup, setShowSignup] = useState(false);
+	const [showContact, setShowContact] = useState(false);
 	const { t } = useTranslation();
 
 	return (
-		<>
-			<Navbar onLogin={() => { setShowSignup(false); setIsLoginOpen(true); }} />
+		<div className="site-wrapper">
+			<Navbar
+				onHome={() => setShowContact(false)}
+				onContact={() => { setShowSignup(false); setShowContact(true); }}
+				onLogin={() => { setShowSignup(false); setShowContact(false); setIsLoginOpen(true); }}
+			/>
 			{showSignup ? (
 				<Signup onBackHome={() => setShowSignup(false)} onLogin={() => { setShowSignup(false); setIsLoginOpen(true); }} />
+			) : showContact ? (
+				<Contact />
 			) : (
 				<>
 					<Homepage />
@@ -75,7 +83,7 @@ export default function App() {
 					onSignup={() => { setIsLoginOpen(false); setShowSignup(true); }}
 				/>
 			)}
-		</>
+		</div>
 	);
 }
 

@@ -31,7 +31,7 @@
 .auth-kicker { margin: 0 0 8px; color: #df751b; font-size: 11px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; }
 .auth-heading h1, .signup-intro h1 { margin: 0 0 10px; color: #17324d; font-family: Georgia, serif; font-size: 34px; letter-spacing: 0; }
 .auth-heading p:last-child, .signup-intro > p:not(.auth-kicker) { color: #64748b; font-size: 14px; line-height: 1.6; }
-.role-switcher { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 28px 0 24px; padding: 5px; background: #edf3f3; }
+.role-switcher { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; margin: 28px 0 24px; padding: 5px; background: #edf3f3; }
 .role-switcher button { padding: 11px; border: 0; background: transparent; color: #64748b; font-size: 13px; font-weight: 700; cursor: pointer; }
 .role-switcher button.selected { background: #17324d; color: #fff; box-shadow: 0 3px 8px rgba(23, 50, 77, 0.2); }
 .auth-form { display: grid; gap: 17px; }

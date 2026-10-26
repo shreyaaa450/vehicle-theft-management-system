@@ -1,0 +1,42 @@
+the cctv footages from the district are combined and saved as a big database 
+this database can be used to search stolen vehicle
+user can enter area and can search for his vehicle
+the backend will search the vehicle from the chassis no. of that vehicle and will return some relevant result
+now i want only user interface for this working coz we are buliding only the prototype
+now build pages for seperate dashboard for end user , investigator , police and admin
+where give searching vwhicle right to every user and 
+
+user -
+add vehicle
+edit vehicle
+search for vehicle (enter area from user)
+add map so that user can add location from where the vehicle got stolen
+delete vehicle
+
+investigator 
+manage cases
+search for vehicle(enter area)
+update vehicle recovery status
+
+police -
+manage cases
+manage users
+assign investigator for cases
+search for vehicle(enter area)
+
+admin - 
+manage cases
+manage police / investigator
+analytical report of cases
+assign investigator for cases
+search for vehicle(enter area)
+
+instructions 
+1. keep the same color pallete and template for the pages
+2. create seperate files for the each dashboard
+3. add dummy data wherever needed to just for understanding
+4. add table for caes and users for management
+
+
+
+

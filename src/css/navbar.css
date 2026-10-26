@@ -514,11 +514,26 @@ body {
 
 @media (max-width: 1200px) {
   .official-list {
-    display: none;
+    gap: 8px;
+  }
+
+  .official {
+    width: 90px;
+  }
+
+  .official strong {
+    font-size: 9px;
   }
 
   .main-nav .nav-link {
-    padding-left: 22px;
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .official-list {
+    display: none;
   }
 }
 

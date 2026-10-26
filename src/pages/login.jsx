@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-export default function Login({ onClose, onSignup }) {
+const roles = ["user", "investigator", "police", "admin"];
+
+export default function Login({ onClose, onSignup, onLogin }) {
 	const { t } = useTranslation();
 	const [role, setRole] = useState("user");
 
@@ -18,11 +20,14 @@ export default function Login({ onClose, onSignup }) {
 				</div>
 
 				<div className="role-switcher" aria-label={t("auth.loginAs")}>
-					<button type="button" className={role === "user" ? "selected" : ""} onClick={() => setRole("user")} aria-pressed={role === "user"}>{t("auth.user")}</button>
-					<button type="button" className={role === "admin" ? "selected" : ""} onClick={() => setRole("admin")} aria-pressed={role === "admin"}>{t("auth.admin")}</button>
+					{roles.map((item) => (
+						<button key={item} type="button" className={role === item ? "selected" : ""} onClick={() => setRole(item)} aria-pressed={role === item}>
+							{item.charAt(0).toUpperCase() + item.slice(1)}
+						</button>
+					))}
 				</div>
 
-				<form className="auth-form" onSubmit={(event) => event.preventDefault()}>
+				<form className="auth-form" onSubmit={(event) => { event.preventDefault(); onLogin(role); }}>
 					<div className="auth-field"><label htmlFor="login-identity">{role === "user" ? t("auth.email") : t("auth.badgeNumber")}</label><input id="login-identity" type={role === "user" ? "email" : "text"} placeholder={role === "user" ? t("auth.emailPlaceholder") : t("auth.badgePlaceholder")} required /></div>
 					<div className="auth-field"><label htmlFor="login-password">{t("auth.password")}</label><input id="login-password" type="password" placeholder={t("auth.passwordPlaceholder")} required /></div>
 					<div className="auth-form-row"><label className="auth-checkbox"><input type="checkbox" /> <span>{t("auth.rememberMe")}</span></label><a href="#forgot-password">{t("auth.forgotPassword")}</a></div>

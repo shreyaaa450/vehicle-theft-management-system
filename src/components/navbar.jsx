@@ -17,8 +17,9 @@ const navItems = [
   "nav.login"
 ];
  
-function App({ onHome, onContact, onLogin }) {
+function App({ onHome, onContact, onLogin, onDashboard }) {
   const [activeNav, setActiveNav] = useState(0);
+  const [menuOpen, setMenuOpen] = useState(false);
   const { t, i18n } = useTranslation();
 
   const toggleLanguage = () => {
@@ -80,21 +81,20 @@ function App({ onHome, onContact, onLogin }) {
         </div>
       </header>
 
-      <nav className="navbar navbar-expand-xl p-0 main-nav">
+      <nav className="navbar navbar-expand-lg p-0 main-nav">
         <div className="container px-0">
           <button
             className="navbar-toggler m-2"
             type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#mainMenu"
             aria-controls="mainMenu"
-            aria-expanded="false"
+            aria-expanded={menuOpen}
             aria-label={t("nav.menu")}
+            onClick={() => setMenuOpen((open) => !open)}
           >
             ☰
           </button>
 
-          <div className="collapse navbar-collapse" id="mainMenu">
+          <div className={`collapse navbar-collapse${menuOpen ? " show" : ""}`} id="mainMenu">
             <ul className="navbar-nav">
               {navItems.map((item, index) => (
                 <li className="nav-item" key={item}>
@@ -104,11 +104,14 @@ function App({ onHome, onContact, onLogin }) {
                     onClick={(event) => {
                       event.preventDefault();
                       setActiveNav(index);
-            if (item === "nav.home") {
-            onHome();
-            } else if (item === "nav.contact") {
-            onContact();
-            } else if (item === "nav.login") {
+                      setMenuOpen(false);
+                      if (item === "nav.home") {
+                        onHome();
+                      } else if (item === "nav.contact") {
+                        onContact();
+                      } else if (item === "nav.dashboard") {
+                        onDashboard();
+                      } else if (item === "nav.login") {
                         onLogin();
                       }
                     }}

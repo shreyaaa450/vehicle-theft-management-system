@@ -2,34 +2,67 @@
 import Homepage from "./pages/homepage.jsx";
 import Contact from "./pages/contact.jsx";
 import Navbar from "./components/navbar.jsx";
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import Login from "./pages/login.jsx";
 import Signup from "./pages/signup.jsx";
+import UserDashboard from "./pages/dashboards/userDashboard.jsx";
+import InvestigatorDashboard from "./pages/dashboards/investigatorDashboard.jsx";
+import PoliceDashboard from "./pages/dashboards/policeDashboard.jsx";
+import AdminDashboard from "./pages/dashboards/adminDashboard.jsx";
+import { BrowserRouter, Navigate, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import "./css/navbar.css";
 import "./css/auth.css";
 
 export default function App() {
-	const [isLoginOpen, setIsLoginOpen] = useState(false);
-	const [showSignup, setShowSignup] = useState(false);
-	const [showContact, setShowContact] = useState(false);
+	return <BrowserRouter><AppRoutes /></BrowserRouter>;
+}
+
+function AppRoutes() {
 	const { t } = useTranslation();
+	const navigate = useNavigate();
+	const location = useLocation();
+	const isLoginOpen = location.pathname === "/login";
+
+	const openDashboard = (role = "user") => {
+		navigate(`/dashboard/${role}/overview`);
+	};
 
 	return (
 		<div className="site-wrapper">
 			<Navbar
-				onHome={() => setShowContact(false)}
-				onContact={() => { setShowSignup(false); setShowContact(true); }}
-				onLogin={() => { setShowSignup(false); setShowContact(false); setIsLoginOpen(true); }}
+				onHome={() => navigate("/")}
+				onContact={() => navigate("/contact")}
+				onLogin={() => navigate("/login")}
+				onDashboard={() => openDashboard("user")}
 			/>
-			{showSignup ? (
-				<Signup onBackHome={() => setShowSignup(false)} onLogin={() => { setShowSignup(false); setIsLoginOpen(true); }} />
-			) : showContact ? (
-				<Contact />
-			) : (
-				<>
-					<Homepage />
-					<footer className="site-footer">
+			<Routes>
+				<Route path="/" element={<><Homepage /><SiteFooter t={t} /></>} />
+				<Route path="/contact" element={<Contact />} />
+				<Route path="/login" element={<><Homepage /><SiteFooter t={t} /></>} />
+				<Route path="/signup" element={<Signup onBackHome={() => navigate("/")} onLogin={() => navigate("/login")} />} />
+				<Route path="/dashboard/user" element={<UserDashboard onExit={() => navigate("/")} />} />
+				<Route path="/dashboard/user/:section" element={<UserDashboard onExit={() => navigate("/")} />} />
+				<Route path="/dashboard/investigator" element={<InvestigatorDashboard onExit={() => navigate("/")} />} />
+				<Route path="/dashboard/investigator/:section" element={<InvestigatorDashboard onExit={() => navigate("/")} />} />
+				<Route path="/dashboard/police" element={<PoliceDashboard onExit={() => navigate("/")} />} />
+				<Route path="/dashboard/police/:section" element={<PoliceDashboard onExit={() => navigate("/")} />} />
+				<Route path="/dashboard/admin" element={<AdminDashboard onExit={() => navigate("/")} />} />
+				<Route path="/dashboard/admin/:section" element={<AdminDashboard onExit={() => navigate("/")} />} />
+				<Route path="*" element={<Navigate to="/" replace />} />
+			</Routes>
+			{isLoginOpen && (
+				<Login
+					onClose={() => navigate("/")}
+					onSignup={() => navigate("/signup")}
+					onLogin={(role) => openDashboard(role)}
+				/>
+			)}
+		</div>
+	);
+}
+
+function SiteFooter({ t }) {
+	return <footer className="site-footer">
 				<div className="footer-main container">
 					<div className="footer-brand">
 						<p className="footer-kicker">{t("site.government")}</p>
@@ -74,17 +107,5 @@ export default function App() {
 						</div>
 					</div>
 				</div>
-					</footer>
-				</>
-			)}
-			{isLoginOpen && (
-				<Login
-					onClose={() => setIsLoginOpen(false)}
-					onSignup={() => { setIsLoginOpen(false); setShowSignup(true); }}
-				/>
-			)}
-		</div>
-	);
+	</footer>;
 }
-
-
